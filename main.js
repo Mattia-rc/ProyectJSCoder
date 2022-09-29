@@ -112,7 +112,6 @@ AgradecimientoCompra.className = "pantalla-agradecimiento"
 cursos.forEach((curso) => {
   let container = document.createElement("div");
 
-
   container.innerHTML = `
   <img>${curso.img}</img>
   <h3>${curso.titulo}</h3>
@@ -246,7 +245,11 @@ verCarrito.addEventListener('click', () => {
         compraFinalizada.style.display = "none"
         let textAgradecimientoCompra  = document.createElement("h2");
         textAgradecimientoCompra.textContent = "MUCHISIMAS GRACIAS"
+        let textAgradecimientoCompra2  = document.createElement("h3");
+        textAgradecimientoCompra2.textContent = "Espero que lo disfrute"
+        textAgradecimientoCompra.className = "claseTextoAgradecimiento"
         AgradecimientoCompra.appendChild(textAgradecimientoCompra)
+        AgradecimientoCompra.appendChild(textAgradecimientoCompra2)
       })
 
 
