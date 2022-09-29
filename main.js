@@ -1,103 +1,6 @@
-/* 
-let contadorCarrito = 0;
-let NumeroCarrito = document.getElementById('CuentaCarrito');
-let resultado = 0;
-let carritoCompra = document.getElementById('carrito');
-let boxNombres = document.getElementById('a_nombreProducto')
-let claseJs = document.querySelector('box_js-invisible');
-let precio_box_cursos = document.getElementById('box_Precios')
-let contadorCarritoJS = document.getElementById('contadorJS');
-let contadorCarritoNumberJS = 0;
-let res;
- */
 
 
-
-/* 
-
-let contenedor = document.createElement("div");
-contenedor.className = "flex_cursos"
-
-let arrayProductos = [];
-
-let notificacion = document.createElement('div');
-notificacion.classList.add('notificacion');
-notificacion.textContent = 'Hola pepe'
-
-for (let curso of cursos) {
-  let cursoContainer = document.createElement("div")
-  let cursoBoton = document.createElement("button")
-  cursoBoton.textContent = "Agregar"
-  cursoBoton.className = "classBotonEdit"
-
-  cursoBoton.addEventListener("click", () => {
-    ContadorCarritoFunction(curso)
-    notificacion.innerHTML = ` <p> Curso ${curso.titulo} fue agregado al carrito haz click aqui para mirar el carrito </p>
-  <a href='carrito.html'>Haz click aqui</a>`
-    notificacion.style.display = 'block';
-    setTimeout(() => notificacion.style.display = 'none', 3000)
-
-    
-    //introduzco cursos a array//
-    arrayProductos.push(curso)
-    console.log(arrayProductos);
-
-    //guardo los datos en localStorage//
-    const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
-    guardarLocal("listaProductos", JSON.stringify(arrayProductos))
-
-    
-    //SUBTOTAL//
-    res = arrayProductos.reduce((accum, p)=>{
-
-      return accum + p.precio
-      
-    }, 0);
-    
-    console.log(res);
-    let subContenedor = document.createElement("div");
-
-    subContenedor.innerHTML = `<h3> El Subtotal es: ${res} </h4> `;
-    
-    
-    subtotalContenedor.appendChild(subContenedor)
-    
-    
-    console.log(subtotalContenedor);
-
-
-  })
-
-  
-
-  cursoContainer.innerHTML = `<h4>Curso: ${curso.titulo}</h4>
-<p>Precio: ${curso.precio}</p>
-`
-  cursoContainer.appendChild(cursoBoton)
-  contenedor.appendChild(cursoContainer);
-  contenedor.appendChild(notificacion)
-}
- 
-
-document.body.appendChild(contenedor)
-function ContadorCarritoFunction(tipoDeCurso) {
-  contadorCarrito++;
-    console.log(tipoDeCurso) 
-  NumeroCarrito.innerHTML = contadorCarrito;
-}
-
- function contadorCarritoJavascript() {
-  contadorCarritoNumberJS++;
-  contadorCarritoJS.innerHTML = contadorCarritoNumberJS;
-}
-
-
-
-let subtotalContenedor = document.getElementById('contenedorSubtotal');
-
-
-*/
-
+//VARIABLES DECLARADOS//
 let contenedorCursos = document.getElementById('contenedor_cursos')
 let verCarrito = document.getElementById("verCarrito")
 let carrito = [];
@@ -105,10 +8,12 @@ let pantallaHeader = document.getElementById('contenedor_Header')
 let resultado = 0;
 let compraFinalizada = document.getElementById("contenedor-Compra");
 let AgradecimientoCompra = document.getElementById("AgradecimientoCompra")
-
-  compraFinalizada.className = "Pantalla-Compra_Finalizada"
+//ASIGNACION DE CLASES//
+compraFinalizada.className = "Pantalla-Compra_Finalizada"
 pantallaHeader.className = "Pantalla-Diseño"
 AgradecimientoCompra.className = "pantalla-agradecimiento"
+
+//MOSTRAR CURSOS EN HTML//
 cursos.forEach((curso) => {
   let container = document.createElement("div");
 
@@ -119,14 +24,15 @@ cursos.forEach((curso) => {
   `
   contenedorCursos.appendChild(container)
 
-
+//CREACION DE BOTON
   let comprarBoton = document.createElement("button")
   comprarBoton.textContent = "Agregar al Carrito";
 
   container.appendChild(comprarBoton)
+//ASIGNACION DE CLASE AL BOTON
+  comprarBoton.className = "BotonCompraEdit"
 
-
-
+  //EVENTO DE CLICK EN BOTON DE COMPRA-CARRITO
   comprarBoton.addEventListener('click', () => {
 
     carrito.push({
@@ -143,13 +49,14 @@ cursos.forEach((curso) => {
 
 })
 
+//CLICK EN LOGO CARRITO PARA VISUALIZARLO//
 verCarrito.addEventListener('click', () => {
   pantallaHeader.innerHTML = ""
   pantallaHeader.style.display = "flex "
   let pantalla = document.createElement("div");
   pantalla.className = "pantallaVIsta"
 
-
+//PANTALLA Q MUESTRA CARRITO//
   pantalla.innerHTML = `
     <h3class = "modalPantalla">Carrito</h3>
   `
@@ -164,7 +71,7 @@ verCarrito.addEventListener('click', () => {
     pantallaHeader.style.display = 'none'
   })
 
-
+//RECORRE EL ARRAY DE CARRITO Y LA MUESTRA EN PANTALLA//
   carrito.forEach((curso) => {
 
     let carritoContenido = document.createElement("div");
@@ -176,11 +83,12 @@ verCarrito.addEventListener('click', () => {
         <h3>${curso.titulo}</h3>
         <h4>$ ${curso.precio}</h4>
         `
-
     pantallaHeader.appendChild(carritoContenido)
 
-  })
+    guardadoStorage()
 
+  })
+//SUBTOTAL DE PRECIO CARRITO//
   resultado = carrito.reduce((accum, p) => {
 
     return accum + p.precio
@@ -196,7 +104,7 @@ verCarrito.addEventListener('click', () => {
   let finalizarCompra = document.createElement("button");
   finalizarCompra.textContent = "Finalizar Compra"
 
-    finalizarCompra.className = "BotonCompras"
+  finalizarCompra.className = "BotonCompras"
 
   let vaciarCarrito = document.createElement("button");
   vaciarCarrito.className = "BotonCompras"
@@ -207,22 +115,22 @@ verCarrito.addEventListener('click', () => {
 
   pantallaHeader.appendChild(divCompras)
 
-
-  vaciarCarrito.addEventListener('click', ()=>{
+//VACIAR CARRITO//
+  vaciarCarrito.addEventListener('click', () => {
     carrito = []
-      
+
   })
 
- /*  compraFinalizada */
-
-    finalizarCompra.addEventListener('click', ()=>{
-      let containerMainFinalizacion
-      pantallaHeader.style.display = "none";
-      let textCompra = document.createElement("h3");
-      textCompra.textContent = "Finalizacion De Compra"
-      let formulario = document.createElement("div");
-      formulario.className = "formulario-css"
-      formulario.innerHTML = `<input type="text" required placeholder="Ingrese su correo"></input>
+  /*  compraFinalizada */
+//FORMULARIO DE COMPRA FINALIZACION//
+  finalizarCompra.addEventListener('click', () => {
+    let containerMainFinalizacion
+    pantallaHeader.style.display = "none";
+    let textCompra = document.createElement("h3");
+    textCompra.textContent = "Finalizacion De Compra"
+    let formulario = document.createElement("div");
+    formulario.className = "formulario-css"
+    formulario.innerHTML = `<input type="text" required placeholder="Ingrese su correo"></input>
       <input type="password" required placeholder="Ingrese su Contraseña"></input>
       <input type="text" required placeholder="Ingrese su tarjeta"></input>
 
@@ -230,33 +138,41 @@ verCarrito.addEventListener('click', () => {
 
       
       `
-    
-  
-      compraFinalizada.appendChild(textCompra)
-      compraFinalizada.appendChild(formulario)
-      let botonFinalizarCompra = document.createElement("button");
-      botonFinalizarCompra.className = "BotonClassEdit"
-      botonFinalizarCompra.textContent = "Finalizar Compra"
-
-      compraFinalizada.appendChild(botonFinalizarCompra)
 
 
-      botonFinalizarCompra.addEventListener('click', ()=>{
-        compraFinalizada.style.display = "none"
-        let textAgradecimientoCompra  = document.createElement("h2");
-        textAgradecimientoCompra.textContent = "MUCHISIMAS GRACIAS"
-        let textAgradecimientoCompra2  = document.createElement("h3");
-        textAgradecimientoCompra2.textContent = "Espero que lo disfrute"
-        textAgradecimientoCompra.className = "claseTextoAgradecimiento"
-        AgradecimientoCompra.appendChild(textAgradecimientoCompra)
-        AgradecimientoCompra.appendChild(textAgradecimientoCompra2)
+    compraFinalizada.appendChild(textCompra)
+    compraFinalizada.appendChild(formulario)
+    let botonFinalizarCompra = document.createElement("button");
+    botonFinalizarCompra.className = "BotonClassEdit"
+    botonFinalizarCompra.textContent = "Finalizar Compra"
+
+    compraFinalizada.appendChild(botonFinalizarCompra)
+
+//BOTON DE FINALIZADO//
+    botonFinalizarCompra.addEventListener('click', () => {
+
+      Swal.fire({
+        title: 'Felicitaciones!',
+        text: 'Haz finalizado tu compra en CoderHome',
+        icon: 'success',
+        confirmButtonText: 'Cool'
       })
-
-
     })
 
-    
+
+  })
+
+
 
 })
 
 
+  //guardo los datos en localStorage//
+
+function guardadoStorage() {
+
+  const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+  guardarLocal("listaProductos", JSON.stringify(carrito))
+
+
+}
