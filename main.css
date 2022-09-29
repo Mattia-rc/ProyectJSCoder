@@ -301,3 +301,109 @@ padding-bottom: 10px;
 .div_containerCompra h3{
   color: #fff;
 }
+
+.Pantalla-Diseño{
+  width: 80%;
+  margin: 0 10%;
+  max-height: 88vh;
+  color: #fff;
+  background-color: rgb(161, 156, 156);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  z-index: 9;
+  top: 12vh;
+  scrollbar-color: none;
+  border-radius: 20px;
+}
+
+.Pantalla-Diseño::-webkit-scrollbar{
+  display: none;
+}
+.carrito-estilo{
+  display: flex;
+  justify-content: space-around;
+  
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  margin-top:1%;
+  margin-bottom: 1%;
+}
+
+.pantallaVIsta{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 630%;
+}
+
+.ComprasStyle{
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  margin-bottom: 3%;
+  margin-top: 2%;
+}
+.BotonCompras{
+  padding: 20px;
+  background-color:yellow;
+  color: #111;
+}
+
+.Pantalla-Compra_Finalizada{
+  width: 80%;
+  margin: 0 10%;
+  max-height: 88vh;
+  color: #fff;
+  background-color: rgb(119, 104, 104);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  z-index: 9;
+  top: 12vh;
+  scrollbar-color: none;
+  border-radius: 20px;
+}
+
+.formulario-css{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 40px;
+}
+
+.formulario-css input{
+  padding: 25px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.BotonClassEdit{
+  margin: 30px;
+  padding: 25px;
+  border-radius: 20px;
+  
+}
+
+
+.pantalla-agradecimiento{
+  width: 80%;
+  margin:300px;
+  max-height: 88vh;
+  color: #fff;
+  background-color: rgb(119, 104, 104);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  z-index: 9;
+  top: 12vh;
+  scrollbar-color: none;
+  border-radius: 20px;
+}
