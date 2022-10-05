@@ -126,6 +126,8 @@ verCarrito.addEventListener('click', () => {
 vaciarCarrito.addEventListener('click', () => {
   carritoVaciar()
   pantallaHeader.style.display = "none"
+  contadorProductos = 0;
+  contenedorContadorProductos.innerHTML = contadorProductos;
 })
 
 
@@ -197,6 +199,6 @@ function guardadoStorage() {
 function carritoVaciar(){
 
     carrito = []
-    
+   
  
 }
