@@ -16,11 +16,11 @@ AgradecimientoCompra.className = "pantalla-agradecimiento"
 //MOSTRAR CURSOS EN HTML//
 cursos.forEach((curso) => {
   let container = document.createElement("div");
-
+  container.className = "CardContainer"
   container.innerHTML = `
   <img>${curso.img}</img>
-  <h3>${curso.titulo}</h3>
-  <h4>$ ${curso.precio}</h4>
+  <h3 class="color_h3">${curso.titulo}</h3>
+  <h4 class="color_h3">$ ${curso.precio}</h4>
   `
   contenedorCursos.appendChild(container)
 
@@ -68,7 +68,9 @@ verCarrito.addEventListener('click', () => {
 
   pantalla.appendChild(botonEscPantalla)
   botonEscPantalla.addEventListener('click', () => {
+
     pantallaHeader.style.display = 'none'
+
   })
 
 //RECORRE EL ARRAY DE CARRITO Y LA MUESTRA EN PANTALLA//
@@ -116,17 +118,23 @@ verCarrito.addEventListener('click', () => {
   pantallaHeader.appendChild(divCompras)
 
 //VACIAR CARRITO//
-  vaciarCarrito.addEventListener('click', () => {
-    carrito = []
 
-  })
+vaciarCarrito.addEventListener('click', () => {
+  carritoVaciar()
+  pantallaHeader.style.display = "none"
+})
+
+
 
   /*  compraFinalizada */
 //FORMULARIO DE COMPRA FINALIZACION//
   finalizarCompra.addEventListener('click', () => {
-    let containerMainFinalizacion
+    let contenedorFlexIcons = document.createElement("div")
+    contenedorFlexIcons.className = "ContenedorFlexIcons"
     pantallaHeader.style.display = "none";
     let textCompra = document.createElement("h3");
+    let botonCerrarFormulario = document.createElement("h1");
+    botonCerrarFormulario.textContent = "❌"
     textCompra.textContent = "Finalizacion De Compra"
     let formulario = document.createElement("div");
     formulario.className = "formulario-css"
@@ -139,8 +147,9 @@ verCarrito.addEventListener('click', () => {
       
       `
 
-
-    compraFinalizada.appendChild(textCompra)
+    contenedorFlexIcons.appendChild(textCompra)
+   contenedorFlexIcons.appendChild(botonCerrarFormulario)
+   compraFinalizada.appendChild(contenedorFlexIcons)
     compraFinalizada.appendChild(formulario)
     let botonFinalizarCompra = document.createElement("button");
     botonFinalizarCompra.className = "BotonClassEdit"
@@ -148,6 +157,9 @@ verCarrito.addEventListener('click', () => {
 
     compraFinalizada.appendChild(botonFinalizarCompra)
 
+    botonCerrarFormulario.addEventListener('click', ()=>{
+      compraFinalizada.style.display = "none"
+    })
 //BOTON DE FINALIZADO//
     botonFinalizarCompra.addEventListener('click', () => {
 
@@ -156,7 +168,9 @@ verCarrito.addEventListener('click', () => {
         text: 'Haz finalizado tu compra en CoderHome',
         icon: 'success',
         confirmButtonText: 'Cool'
+        
       })
+      
     })
 
 
@@ -175,4 +189,10 @@ function guardadoStorage() {
   guardarLocal("listaProductos", JSON.stringify(carrito))
 
 
+}
+function carritoVaciar(){
+
+    carrito = []
+    
+ 
 }
