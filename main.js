@@ -8,6 +8,8 @@ let pantallaHeader = document.getElementById('contenedor_Header')
 let resultado = 0;
 let compraFinalizada = document.getElementById("contenedor-Compra");
 let AgradecimientoCompra = document.getElementById("AgradecimientoCompra")
+let contenedorContadorProductos = document.getElementById("contadorContenedor");
+let contadorProductos = 0;
 //ASIGNACION DE CLASES//
 compraFinalizada.className = "Pantalla-Compra_Finalizada"
 pantallaHeader.className = "Pantalla-Diseño"
@@ -28,25 +30,30 @@ cursos.forEach((curso) => {
   let comprarBoton = document.createElement("button")
   comprarBoton.textContent = "Agregar al Carrito";
 
-  container.appendChild(comprarBoton)
+ 
 //ASIGNACION DE CLASE AL BOTON
   comprarBoton.className = "BotonCompraEdit"
 
   //EVENTO DE CLICK EN BOTON DE COMPRA-CARRITO
   comprarBoton.addEventListener('click', () => {
-
+   
     carrito.push({
-
       id: curso.id,
       img: curso.img,
       titulo: curso.titulo,
       precio: curso.precio
     })
+    
 
     console.log(carrito);
+    contadorProductos++;
+    console.log(contadorProductos);
+    contenedorContadorProductos.className = "contenedorProductosSize"
+    contenedorContadorProductos.innerHTML = contadorProductos;
   })
 
 
+  container.appendChild(comprarBoton)
 })
 
 //CLICK EN LOGO CARRITO PARA VISUALIZARLO//
@@ -76,7 +83,6 @@ verCarrito.addEventListener('click', () => {
 
     let carritoContenido = document.createElement("div");
     carritoContenido.className = "carrito-estilo";
-
     carritoContenido.innerHTML = `
         <p>ID de Producto ${curso.id} </p>
         <img>${curso.img}</img>
@@ -84,9 +90,7 @@ verCarrito.addEventListener('click', () => {
         <h4>$ ${curso.precio}</h4>
         `
     pantallaHeader.appendChild(carritoContenido)
-
     guardadoStorage()
-
   })
 //SUBTOTAL DE PRECIO CARRITO//
   resultado = carrito.reduce((accum, p) => {
