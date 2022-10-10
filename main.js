@@ -16,7 +16,11 @@ pantallaHeader.className = "Pantalla-Diseño"
 AgradecimientoCompra.className = "pantalla-agradecimiento"
 
 //MOSTRAR CURSOS EN HTML//
-cursos.forEach((curso) => {
+
+fetch("/data.json")
+.then((res)=>res.json())
+.then((data)=>{
+data.forEach((curso) => {
   let container = document.createElement("div");
   container.className = "CardContainer"
   container.innerHTML = `
@@ -55,6 +59,11 @@ cursos.forEach((curso) => {
 
   container.appendChild(comprarBoton)
 })
+
+})
+
+
+
 
 //CLICK EN LOGO CARRITO PARA VISUALIZARLO//
 verCarrito.addEventListener('click', () => {
@@ -176,9 +185,9 @@ vaciarCarrito.addEventListener('click', () => {
         confirmButtonText: 'Cool'
         
       })
-      
+      desmostrar()
     })
-
+   
 
   })
 
@@ -188,17 +197,18 @@ vaciarCarrito.addEventListener('click', () => {
 
 
   //guardo los datos en localStorage//
-
 function guardadoStorage() {
-
   const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
   guardarLocal("listaProductos", JSON.stringify(carrito))
-
-
 }
 function carritoVaciar(){
-
     carrito = []
-   
- 
+}
+function desmostrar(){
+  
+  compraFinalizada.style.display = "none"
+  contadorProductos = 0;
+  
+  carrito = []
+  contenedorContadorProductos.innerHTML = contadorProductos;
 }
