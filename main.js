@@ -17,7 +17,7 @@ AgradecimientoCompra.className = "pantalla-agradecimiento"
 
 //MOSTRAR CURSOS EN HTML//
 
-fetch("data.json")
+fetch("carpetaJson/data.json")
 .then((res)=>res.json())
 .then((data)=>{
 data.forEach((curso) => {
