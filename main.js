@@ -179,7 +179,7 @@ vaciarCarrito.addEventListener('click', () => {
     botonFinalizarCompra.addEventListener('click', () => {
 
       Swal.fire({
-        title: 'Felicitaciones!',
+        title: 'Felicitaciones!!',
         text: 'Haz finalizado tu compra en CoderHome',
         icon: 'success',
         confirmButtonText: 'Cool'
