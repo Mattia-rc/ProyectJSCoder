@@ -148,6 +148,9 @@ vaciarCarrito.addEventListener('click', () => {
       confirmButtonText: 'Cool'
       
     })
+   setTimeout(function(){
+    cerrarVentanasTodas()
+   }, 2000)
   })
 
 
@@ -165,4 +168,12 @@ function guardadoStorage() {
 /* Funcion vaciar carrito */
 function carritoVaciar(){
     carrito = []
+}
+
+
+function cerrarVentanasTodas(){
+  carrito = [];
+  pantallaHeader.style.display = "none"
+  contadorProductos = 0;
+  contenedorContadorProductos.innerHTML = contadorProductos;
 }
