@@ -144,51 +144,13 @@ vaciarCarrito.addEventListener('click', () => {
   /*  compraFinalizada */
 //FORMULARIO DE COMPRA FINALIZACION//
   finalizarCompra.addEventListener('click', () => {
-    let contenedorFlexIcons = document.createElement("div")
-    contenedorFlexIcons.className = "ContenedorFlexIcons"
-    pantallaHeader.style.display = "none";
-    let textCompra = document.createElement("h3");
-    let botonCerrarFormulario = document.createElement("h1");
-    botonCerrarFormulario.textContent = "❌"
-    textCompra.textContent = "Finalizacion De Compra"
-    let formulario = document.createElement("div");
-    formulario.className = "formulario-css"
-    formulario.innerHTML = `<input type="text" required placeholder="Ingrese su correo"></input>
-      <input type="password" required placeholder="Ingrese su Contraseña"></input>
-      <input type="text" required placeholder="Ingrese su tarjeta"></input>
-
-      <h3>Su total es de: ${resultado} </h3>
-
+    Swal.fire({
+      title: 'Felicitaciones!!',
+      text: 'Haz finalizado tu compra en CoderHome',
+      icon: 'success',
+      confirmButtonText: 'Cool'
       
-      `
-
-    contenedorFlexIcons.appendChild(textCompra)
-   contenedorFlexIcons.appendChild(botonCerrarFormulario)
-   compraFinalizada.appendChild(contenedorFlexIcons)
-    compraFinalizada.appendChild(formulario)
-    let botonFinalizarCompra = document.createElement("button");
-    botonFinalizarCompra.className = "BotonClassEdit"
-    botonFinalizarCompra.textContent = "Finalizar Compra"
-
-    compraFinalizada.appendChild(botonFinalizarCompra)
-
-    botonCerrarFormulario.addEventListener('click', ()=>{
-      compraFinalizada.style.display = "none"
     })
-//BOTON DE FINALIZADO//
-    botonFinalizarCompra.addEventListener('click', () => {
-
-      Swal.fire({
-        title: 'Felicitaciones!!',
-        text: 'Haz finalizado tu compra en CoderHome',
-        icon: 'success',
-        confirmButtonText: 'Cool'
-        
-      })
-      desmostrar()
-    })
-   
-
   })
 
 
@@ -201,14 +163,9 @@ function guardadoStorage() {
   const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
   guardarLocal("listaProductos", JSON.stringify(carrito))
 }
+
+
+/* Funcion vaciar carrito */
 function carritoVaciar(){
     carrito = []
-}
-function desmostrar(){
-  
-  compraFinalizada.style.display = "none"
-  contadorProductos = 0;
-  
-  carrito = []
-  contenedorContadorProductos.innerHTML = contadorProductos;
 }
