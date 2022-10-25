@@ -24,7 +24,6 @@ data.forEach((curso) => {
   let container = document.createElement("div");
   container.className = "CardContainer"
   container.innerHTML = `
-  <img>${curso.img}</img>
   <h3 class="color_h3">${curso.titulo}</h3>
   <h4 class="color_h3">$ ${curso.precio}</h4>
   `
@@ -43,7 +42,6 @@ data.forEach((curso) => {
    
     carrito.push({
       id: curso.id,
-      img: curso.img,
       titulo: curso.titulo,
       precio: curso.precio
     })
@@ -96,8 +94,7 @@ verCarrito.addEventListener('click', () => {
     carritoContenido.className = "carrito-estilo";
     carritoContenido.innerHTML = `
         <p>ID de Producto ${curso.id} </p>
-        <img>${curso.img}</img>
-        <h3>${curso.titulo}</h3>
+        <h5> Nombre del curso es:  ${curso.titulo} </h5>
         <h4>$ ${curso.precio}</h4>
         `
     pantallaHeader.appendChild(carritoContenido)
